@@ -97,7 +97,7 @@ func (c *Client) sendCustomRequest(req *http.Request, successValue interface{}, 
 		// 	return true, nil
 		// }
 
-		return false, fmt.Errorf("unknown, status code: %d", res.StatusCode)
+		return false, fmt.Errorf("supabase error, status code: (%d)", res.StatusCode)
 	} else if res.StatusCode != http.StatusNoContent {
 		if err = json.NewDecoder(res.Body).Decode(&successValue); err != nil {
 			return false, err
